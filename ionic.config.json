@@ -1,0 +1,7 @@
+{
+  "name": "matte",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
