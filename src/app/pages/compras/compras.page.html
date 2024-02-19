@@ -1,0 +1,96 @@
+<ion-content [fullscreen]="true">
+
+  <div id="container">
+
+    <div class="title">
+      <ion-title> Compras </ion-title>
+    </div>
+
+    <div class="box">
+
+      <div class="headers-table">
+        <div class="title-table">
+          <ion-label>Ver compras realizadas</ion-label>
+        </div>
+
+        <div class="search">
+          <div class="datetime">
+
+            <ion-title>desde: </ion-title>
+            <ion-datetime-button datetime="datetime">Inicio: </ion-datetime-button>
+            <ion-modal [keepContentsMounted]="true">
+              <ng-template>
+                <ion-datetime id="datetime" presentation="date"></ion-datetime>
+              </ng-template>
+            </ion-modal>
+            
+            <ion-title>hasta: </ion-title>
+            <ion-datetime-button datetime="datetime2"></ion-datetime-button>
+  
+            <ion-modal [keepContentsMounted]="true">
+              <ng-template>
+                <ion-datetime id="datetime2" presentation="date"></ion-datetime>
+              </ng-template>
+            </ion-modal>
+          </div>
+
+          <div class="searchbar">
+            <ion-searchbar placeholder="Buscar Cliente..."></ion-searchbar>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-table">
+        <ion-grid color="primary">     
+          <ion-row class="row-titles">
+            <ion-col size="2">ID COMPRA</ion-col>
+            <ion-col size="3">PROVEEDOR</ion-col>
+            <ion-col size="2" class="ion-text-end">TOTAL</ion-col>
+            <ion-col size="3" class="ion-text-center">FECHA</ion-col>
+            <ion-col size="2"></ion-col>
+          </ion-row>
+        </ion-grid>
+
+        <div class="custom-hr"></div>
+
+        <ion-grid >
+          <ion-row *ngFor="let item of displayedItems">
+            <ion-col class="ion-text-start" size="2"> {{item.id_compra}} </ion-col>            
+            <ion-col size="3"> {{item.nombre_proveedor}} </ion-col>
+            <ion-col class="ion-text-end" size="2"> {{item.total | currency:'COP':'symbol-narrow'}}  </ion-col>
+            <ion-col class="ion-text-center" size="3"> {{item.fecha}} </ion-col>
+            <ion-col size="2" class="buttons">
+              <ion-button (click)="verDetalle(item.id_compra)">
+                <ion-icon name="eye" color="info"></ion-icon>
+              </ion-button>
+              <ion-button class="buttons" color="danger">
+                <ion-icon name="trash"></ion-icon>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+
+      <div class="pagination-controls">
+        <div class="control-buttons">
+          <button ion-button (click)="prevPage()" [disabled]="currentPage === 1">
+            <ion-icon name="chevron-back-outline"></ion-icon>
+          </button>
+          <span>{{ currentPage }}</span>
+          <button ion-button (click)="nextPage()" [disabled]="currentPage === totalPages">
+            <ion-icon name="chevron-forward-outline"></ion-icon>
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button (click)="openModal()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>

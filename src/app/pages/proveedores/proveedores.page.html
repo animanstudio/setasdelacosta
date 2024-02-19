@@ -1,0 +1,63 @@
+<ion-content [fullscreen]="true">
+
+  <div id="container">
+
+    <div class="title">
+      <ion-title> Proveedores </ion-title>
+    </div>
+
+    <div class="box">
+
+      <div class="headers-table">
+        <div class="title-table">
+          <ion-label>Ver lista de proveedores</ion-label>
+        </div>
+
+        <div class="search">
+          <div class="searchbar">
+            <ion-searchbar placeholder="Buscar Cliente..."></ion-searchbar>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-table">
+        <ion-grid color="primary">     
+          <ion-row class="row-titles">
+            <ion-col size="2">NOMBRE</ion-col>
+            <ion-col size="4">DIRECCIÓN</ion-col>
+            <ion-col size="2">TELÉFONO</ion-col>
+            <ion-col size="2">ESTADO</ion-col>
+            <ion-col size="2"></ion-col>
+          </ion-row>
+        </ion-grid>
+
+        <div class="custom-hr"></div>
+
+        <ion-grid >
+          <ion-row *ngFor="let item of proveedores">
+            <ion-col class="ion-text-start" size="2"> {{item.nombre}} </ion-col>            
+            <ion-col size="4"> {{item.direccion}} </ion-col>
+            <ion-col class="ion-text-start" size="2"> {{item.telefono}}  </ion-col>
+            <ion-col class="ion-text-start" size="2"> {{item.estado}} </ion-col>
+            <ion-col size="2" class="buttons">
+              <ion-button>
+                <ion-icon name="create" color="info"></ion-icon>
+              </ion-button>
+              <ion-button class="buttons" color="danger">
+                <ion-icon name="trash"></ion-icon>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </div>
+
+  </div>
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button >
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>

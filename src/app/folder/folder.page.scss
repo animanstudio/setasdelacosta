@@ -1,28 +1,88 @@
-ion-menu-button {
-  color: var(--ion-color-primary);
-}
+ion-content {
+  --background: #FFD2BA;
 
-#container {
-  text-align: center;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
+  #container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
-}
+    .title {
+      margin-top: 5%;
+      margin-left: 5%;
+      margin-right: 5%;
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-  color: #8c8c8c;
-  margin: 0;
-}
+      ion-title {
+        font-size: 20px;
+        font-family: 'poppins-bold', sans-serif;
+        color: #6B3416;
+      }
+    }
 
-#container a {
-  text-decoration: none;
+    .box {
+      background-color: white;
+      width: 90%;
+      margin-top: 2%;
+      margin-left: 5%;
+      margin-right: 5%;
+      border-radius: 10px;
+      height: 75vh;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+
+      .title-table {
+        margin-left: 2vh;
+        margin-top: 2vh;
+
+        ion-label {
+          font-size: 16px;
+          font-family: 'poppins-medium', sans-serif;
+          color: #6B3416;
+        }
+      }
+
+      .search {
+        margin-right: 2vh;
+        margin-top: 2vh;
+        display: flex;
+        flex-direction: row;
+
+        .datetime {
+          width: 50vh;
+          display: flex;
+          flex-direction: row;
+
+          ion-modal {
+            font-size: 16px;
+            font-family: 'poppins-medium', sans-serif;
+            color: #6B3416;
+          }
+
+          ion-title {
+            font-size: 16px;
+            font-family: 'poppins-medium', sans-serif;
+            color: #6B3416;
+          }
+
+          ion-datetime-button {
+            width: 90%;
+            font-size: 16px;
+            font-family: 'poppins-medium', sans-serif;
+            color: #6B3416;
+          }
+        }
+
+        .searchbar {
+          ion-searchbar {
+            font-size: 16px;
+            font-family: 'poppins-medium', sans-serif;
+            color: #6B3416;
+            border-radius: 10px;
+          }
+        }
+      }
+    }
+  }
 }

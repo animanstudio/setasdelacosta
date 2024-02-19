@@ -1,0 +1,89 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>CREAR COMPRA</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <form [formGroup]="formGroup">
+    <ion-item>
+      <ion-select [formControl]="proveedorControl" placeholder="Seleccione el proveedor">
+        <ion-select-option *ngFor="let proveedor of dbproveedores" [value]="proveedor">{{ proveedor.nombre }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </form>
+
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col><ion-label><strong></strong></ion-label></ion-col>
+
+    </ion-row>
+    <ion-row>
+      <ion-col size="3">
+        <ion-item>
+          <ion-label position="floating">Buscar...</ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+
+        <ion-list>
+          <ion-item *ngFor="let item of productos">
+            {{ item.nombre }}
+            <ion-icon name="add-circle" slot="end" (click)="addItem(item)"></ion-icon>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+
+      <ion-col size="1">
+
+      </ion-col>
+
+
+      <ion-col size="8">
+        <ion-grid fixed>
+          <ion-row>
+            <ion-col size="5"><ion-label><strong>PRODUCTO</strong></ion-label></ion-col>
+            <ion-col size="2" class="ion-text-center"><ion-label><strong>CANT</strong></ion-label></ion-col>
+            <ion-col size="3" class="ion-text-end"><ion-label><strong>PRECIO</strong></ion-label></ion-col>
+            <ion-col size="2" class="ion-text-end"><ion-label></ion-label></ion-col>
+          </ion-row>
+
+          <ion-row *ngFor="let selectedItem of selectedItems" class="items-sell">
+            <ion-col size="5">{{ selectedItem.nombre }}</ion-col>
+            <ion-col size="2" class="ion-text-center">
+              <ion-input type="number" [formControl]="cantidadIngresada"
+                (ionChange)="onCantidadChange(selectedItem, $event)"></ion-input>
+            </ion-col>
+            <ion-col size="2" class="ion-text-center">
+              <ion-input type="number" [formControl]="precioCompra"
+              (ionChange)="onPrecioChange(selectedItem, $event)"></ion-input>
+            </ion-col>            
+            <ion-col size="2">
+              <ion-button color="danger" (click)="addItem(selectedItem)">
+                <ion-icon name="close-outline" slot="end"></ion-icon>
+              </ion-button>
+            </ion-col>
+          </ion-row>          
+
+        </ion-grid>
+      </ion-col>
+
+      
+
+
+
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="6"></ion-col>
+      <ion-col size="6">
+        <ion-button expand="block" (click)="crearCompra()" class="sellbutton">
+          GENERAR COMPRA
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

@@ -1,0 +1,20 @@
+.items-sell {
+    display: flex;
+    align-items: center;
+    font-family: 'poppins-medium', sans-serif;
+
+}
+
+ion-content,
+ion-list, ion-select {
+    font-family: 'poppins-medium', sans-serif;
+}
+
+ion-toolbar {
+    --background: #6B3416;
+    color: white;
+}
+
+.sellbutton {
+    --background: #6B3416;
+}

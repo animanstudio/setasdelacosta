@@ -1,0 +1,125 @@
+<ion-content [fullscreen]="true">
+
+  <div id="container">
+
+    <div class="title">
+      <ion-title> Crear nueva venta </ion-title>
+    </div>
+
+    <div class="nuevaventa">
+      <div class="box1">
+        <div class="headers-table">
+          <div class="title-table">
+            <ion-label>Productos</ion-label>
+          </div>
+
+          <div class="search">
+            <div class="datetime">
+            </div>
+
+            <div class="searchbar">
+            </div>
+          </div>
+        </div>
+
+        <div class="content-table">
+          <ion-grid color="primary">
+            <ion-row class="row-titles">
+              <ion-col size="10">
+                <ion-searchbar placeholder="Buscar Cliente..."></ion-searchbar>
+              </ion-col>
+              <ion-col size="2"></ion-col>
+            </ion-row>
+          </ion-grid>
+
+          <div class="custom-hr"></div>
+
+          <ion-grid>
+            <ion-row>
+              <ion-col class="ion-text-start" size="10"> Papa capira </ion-col>
+              <ion-col size="2" class="buttons">
+                <ion-button>
+                  <ion-icon name="add" color="info"></ion-icon>
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+
+        <!-- 
+      <div class="pagination-controls">
+        <div class="control-buttons">
+          <button ion-button (click)="prevPage()" [disabled]="currentPage === 1">
+            <ion-icon name="chevron-back-outline"></ion-icon>
+          </button>
+          <span>{{ currentPage }}</span>
+          <button ion-button (click)="nextPage()" [disabled]="currentPage === totalPages">
+            <ion-icon name="chevron-forward-outline"></ion-icon>
+          </button>
+        </div>
+      </div>
+      -->
+      </div>
+      <div class="box2">
+        <div class="headers-table">
+          <div class="title-table">
+            <ion-label>Productos</ion-label>
+          </div>
+
+          <div class="search">
+
+            <div class="searchbar">
+            </div>
+          </div>
+        </div>
+
+        <div class="content-table">
+          <ion-grid color="primary">
+            <ion-row class="row-titles">
+              <ion-col size="10">
+                <ion-searchbar placeholder="Buscar Cliente..."></ion-searchbar>
+              </ion-col>
+              <ion-col size="2"></ion-col>
+            </ion-row>
+          </ion-grid>
+
+          <div class="custom-hr"></div>
+
+          <ion-grid>
+            <ion-row>
+              <ion-col class="ion-text-start" size="10"> Papa capira </ion-col>
+              <ion-col size="2" class="buttons">
+                <ion-button>
+                  <ion-icon name="add" color="info"></ion-icon>
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+
+        <!-- 
+      <div class="pagination-controls">
+        <div class="control-buttons">
+          <button ion-button (click)="prevPage()" [disabled]="currentPage === 1">
+            <ion-icon name="chevron-back-outline"></ion-icon>
+          </button>
+          <span>{{ currentPage }}</span>
+          <button ion-button (click)="nextPage()" [disabled]="currentPage === totalPages">
+            <ion-icon name="chevron-forward-outline"></ion-icon>
+          </button>
+        </div>
+      </div>
+      -->
+      </div>
+    </div>
+
+  </div>
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+
+</ion-content>

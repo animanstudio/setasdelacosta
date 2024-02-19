@@ -1,0 +1,45 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>CREAR PRODUCTO</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Crear Producto</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-list class="inputs">
+
+    <ion-item>
+      <ion-label >Nombre: </ion-label>
+      <ion-input type="text" [(ngModel)]="nombre"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label >Unidad: </ion-label>
+      <ion-input type="text" [(ngModel)]="unidad"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label >Precio: </ion-label>
+      <ion-input type="number" [(ngModel)]="precio"></ion-input>
+    </ion-item>
+
+  </ion-list>
+
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="6"></ion-col>
+      <ion-col size="6">
+        <ion-button expand="block" (click)="guardarProducto()" class="sellbutton">
+          CREAR PRODUCTO 
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
