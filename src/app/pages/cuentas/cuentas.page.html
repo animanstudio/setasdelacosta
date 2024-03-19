@@ -1,0 +1,136 @@
+<ion-content [fullscreen]="true">
+
+  <div id="container">
+
+    <div class="title">
+      <ion-title> Estado de cuentas: VENTAS - ABONOS</ion-title>
+    </div>
+
+    <div class="nuevaventa">
+      <div class="box1">
+        <div class="headers-table ">
+          <div class="search_client">
+          <ion-row >
+            <ion-col size="2" class="subtitles">
+              <ion-label>Cliente: </ion-label>
+            </ion-col>
+
+            <ion-col size="6">
+              <form>
+                <ion-item>
+                  <ion-select [formControl]="clienteControl" placeholder="Seleccione el cliente">
+                    <ion-select-option *ngFor="let cliente of dbclientes" [value]="cliente.id_cliente">{{ cliente.nombre
+                      }}</ion-select-option>
+                  </ion-select>
+                </ion-item>
+              </form>
+            </ion-col>
+
+            <ion-col size="3">
+              <ion-button expand="block" (click)="cargarAcumuladoVentas()">
+                GENERAR
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </div>
+
+          <ion-row class="ventas">
+            <ion-col size="6">             
+            </ion-col>
+
+            <ion-col size="3" >
+              <ion-label> <strong> TOTAL VENTAS: </strong> </ion-label>
+            </ion-col>  
+            <ion-col size="3" class="ion-text-end">
+              <ion-label> <strong>{{totalVenta | currency:'COP':'symbol-narrow'}} </strong></ion-label>
+            </ion-col>            
+          </ion-row>
+        </div>
+
+        <div class="content-table">
+          
+          <div class="custom-hr"></div>
+
+          <ion-grid>
+            <ion-row class="ion-text-start" size="10">
+              <ion-col size="4" class="ion-text-start"><ion-label><strong>FECHA</strong></ion-label></ion-col>
+              <ion-col size="4" class="ion-text-end"><ion-label><strong>VENTAS</strong></ion-label></ion-col>
+              <ion-col size="4" class="ion-text-end"><ion-label><strong>ACUMULADO VENTAS</strong></ion-label></ion-col>
+            </ion-row>
+            <ion-row *ngFor="let item of obtenerElementosPaginados()">
+              <ion-col size="4" class="ion-text-start"><ion-label>{{item.Fecha}}</ion-label></ion-col>
+              <ion-col size="4" class="ion-text-end"><ion-label> {{item.Ventas | currency:'COP':'symbol-narrow'}}
+                </ion-label></ion-col>
+              <ion-col size="4" class="ion-text-end"><ion-label>{{item.Acumulado_Ventas |
+                  currency:'COP':'symbol-narrow'}}</ion-label></ion-col>
+            </ion-row>
+          </ion-grid>
+
+          <div class="pagination">
+            <div class="pagination-controls">
+              <button ion-button (click)="cambiarPagina(paginaActual - 1)" [disabled]="paginaActual === 1">
+                < </button>
+                  <span> {{ paginaActual }} </span>
+                  <button ion-button (click)="cambiarPagina(paginaActual + 1)"
+                    [disabled]="paginaActual === paginasTotales">
+                    >
+                  </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="box2">
+        <div class="headers-table">
+          <ion-row>
+            <ion-col size="3" class="subtitles">
+              <ion-label> <strong> TOTAL ABONOS: </strong></ion-label>
+            </ion-col>
+
+            <ion-col size="3" class="ion-text-end">
+              <ion-label> <strong>{{totalAbono | currency:'COP':'symbol-narrow'}} </strong></ion-label>
+            </ion-col>
+
+            <ion-col size="3" class="subtitles">
+              <ion-label> <strong> PENDIENTE: </strong></ion-label>
+            </ion-col>
+
+            <ion-col size="3" class="ion-text-end">
+              <ion-label> <strong>{{saldoPendiente | currency:'COP':'symbol-narrow'}} </strong></ion-label>
+            </ion-col>
+          </ion-row>
+        </div>
+
+        <div class="content-table">
+          <ion-grid color="primary">
+
+          </ion-grid>
+
+          <div class="custom-hr"></div>
+
+          <ion-grid>
+            <ion-grid>
+              <ion-row size="10">
+                <ion-col size="4" class="ion-text-start"><ion-label><strong>FECHA</strong></ion-label></ion-col>
+                <ion-col size="4" class="ion-text-end"><ion-label><strong>ABONOS</strong></ion-label></ion-col>
+                <ion-col size="4" class="ion-text-end"><ion-label><strong>ACUMULADO
+                      ABONOS</strong></ion-label></ion-col>
+              </ion-row>
+              <ion-row *ngFor="let item of acumuladoAbonos">
+                <ion-col size="4" class="ion-text-start"><ion-label>{{item.Fecha}}</ion-label></ion-col>
+                <ion-col size="4" class="ion-text-end"><ion-label> {{item.Abonos | currency:'COP':'symbol-narrow'}}
+                  </ion-label></ion-col>
+                <ion-col size="4" class="ion-text-end"><ion-label>{{item.Acumulado_Abonos |
+                    currency:'COP':'symbol-narrow'}}</ion-label></ion-col>
+              </ion-row>
+            </ion-grid>
+
+          </ion-grid>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+</ion-content>

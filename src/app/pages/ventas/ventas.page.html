@@ -60,6 +60,11 @@
             <ion-col class="ion-text-end" size="2"> {{item.total | currency:'COP':'symbol-narrow'}} </ion-col>
             <ion-col class="ion-text-center" size="3"> {{item.fecha}} </ion-col>
             <ion-col size="2" class="buttons">
+              
+              <ion-button color="warning">
+                <ion-icon name="document-text-outline" ></ion-icon>
+              </ion-button>             
+
               <ion-button (click)="verDetalle(item.id_venta)">
                 <ion-icon name="eye" color="info"></ion-icon>
               </ion-button>
@@ -87,7 +92,7 @@
   </div>
 
   <ion-fab slot="fixed" vertical="bottom" horizontal="end">
-    <ion-fab-button (click)="openModal()">
+    <ion-fab-button (click)="iraVentas()">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>

@@ -3,18 +3,15 @@ import { ModalController, ToastController } from '@ionic/angular';
 import { ServicesService } from 'src/app/core/services/services.service';
 
 @Component({
-  selector: 'app-crear-producto',
-  templateUrl: './crear-producto.page.html',
-  styleUrls: ['./crear-producto.page.scss'],
+  selector: 'app-crear',
+  templateUrl: './crear.page.html',
+  styleUrls: ['./crear.page.scss'],
 })
-export class CrearProductoPage implements OnInit {
+export class CrearPage implements OnInit {
 
   nombre: string | undefined;
-  unidad: string | undefined;  
-  costo: number | undefined;
-  precio_antes_iva: number | undefined;
-  cantidad: number | undefined;
-  descuento: number | undefined;
+  direccion: string | undefined;
+  telefono: number | undefined;
 
   constructor(
     private service: ServicesService,
@@ -25,21 +22,18 @@ export class CrearProductoPage implements OnInit {
   ngOnInit() {
   }
 
-  guardarProducto() {
-    const producto = {
+  crearCliente() {
+    const cliente = {
       nombre: this.nombre,
-      unidad: this.unidad,
-      costo: this.costo,    
-      cantidad: this.cantidad,  
-      precio_antes_iva: this.precio_antes_iva,
-      descuento: this.descuento,
+      direccion: this.direccion,
+      telefono: this.telefono,            
       estado: "activo"
     }
    
 
-    console.log(producto); 
+    console.log(cliente); 
         
-    this.service.crearProducto(producto).subscribe(
+    this.service.crearCliente(cliente).subscribe(
       async response => {
         console.log('Pedido enviado exitosamente:', response);  
         this.modalController.dismiss();    
@@ -61,3 +55,4 @@ export class CrearProductoPage implements OnInit {
   }
 
 }
+

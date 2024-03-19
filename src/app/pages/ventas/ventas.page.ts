@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController} from '@ionic/angular';
 import { ServicesService } from 'src/app/core/services/services.service';
-import { CrearPage } from './crear/crear.page';
 import { DetalleVentaPage } from './detalle-venta/detalle-venta.page';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-ventas',
@@ -22,7 +23,8 @@ export class VentasPage implements OnInit {
 
   constructor(
     private service: ServicesService,
-    private modalController: ModalController
+    private modalController: ModalController,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -48,15 +50,8 @@ export class VentasPage implements OnInit {
     this.displayedItems = this.ventas.slice(startIndex, endIndex);
   }
 
-  async openModal() {
-    const modal = await this.modalController.create({
-      component: CrearPage,
-      componentProps: {}
-    });
-    modal.onDidDismiss().then(() => {
-      this.loadVentas(); 
-    });
-    return await modal.present();
+  iraVentas() {    
+    this.router.navigate(['ventas', 'crear']);
   }
 
   prevPage() {

@@ -25,8 +25,23 @@
     </ion-item>
 
     <ion-item>
+      <ion-label >Costo: </ion-label>
+      <ion-input type="number" [(ngModel)]="costo"></ion-input>
+    </ion-item>
+
+    <ion-item>
       <ion-label >Precio: </ion-label>
-      <ion-input type="number" [(ngModel)]="precio"></ion-input>
+      <ion-input type="number" [(ngModel)]="precio_antes_iva"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label >Descuento: </ion-label>
+      <ion-input type="number" [(ngModel)]="descuento"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label >Cantidad: </ion-label>
+      <ion-input type="number" [(ngModel)]="cantidad"></ion-input>
     </ion-item>
 
   </ion-list>

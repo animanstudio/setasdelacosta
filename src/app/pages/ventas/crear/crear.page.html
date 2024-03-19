@@ -1,84 +1,132 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>CREAR VENTA</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
 
-  <form [formGroup]="formGroup">
-    <ion-item>
-      <ion-select [formControl]="clienteControl" placeholder="Seleccione el cliente">
-        <ion-select-option *ngFor="let cliente of dbclientes" [value]="cliente">{{ cliente.nombre }}</ion-select-option>
-      </ion-select>
-    </ion-item>
-  </form>
+  <div id="container">
 
-  <ion-grid fixed>
-    <ion-row>
-      <ion-col><ion-label><strong></strong></ion-label></ion-col>
+    <div class="title">
+      <ion-title> Crear nueva venta </ion-title>
+    </div>
 
-    </ion-row>
-    <ion-row>
-      <ion-col size="3">
-        <ion-item>
-          <ion-label position="floating">Buscar...</ion-label>
-          <ion-input></ion-input>
-        </ion-item>
+    <div class="nuevaventa">
+      <div class="box1">
+        <div class="headers-table">
 
-        <ion-list>
-          <ion-item *ngFor="let item of productos">
-            {{ item.nombre }}
-            <ion-icon name="add-circle" slot="end" (click)="addItem(item)"></ion-icon>
-          </ion-item>
-        </ion-list>
-      </ion-col>
+        </div>
 
-      <ion-col size="1">
+        <div class="content-table">
+          <ion-grid color="primary">
+            <ion-row class="row-titles">
+              <ion-col size="10">
+                <ion-searchbar placeholder="Buscar productos" (ionInput)="onSearchChange($event)"></ion-searchbar>
+              </ion-col>
+              <ion-col size="2"></ion-col>
+            </ion-row>
+          </ion-grid>
 
-      </ion-col>
+          <div class="custom-hr"></div>
 
+          <ion-grid>
+            <ion-row *ngFor="let item of productos" class="ion-text-start" size="10">
+              <ion-col>
+                <ion-item>
+                  {{ item.nombre }} - ({{ item.unidad }})
+                </ion-item>
+              </ion-col>
+              <ion-col size="2">
+                <ion-button (click)="addItem(item)">
+                  <ion-icon name="add" color="info"></ion-icon>
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
 
-      <ion-col size="8">
-        <ion-grid fixed>
-          <ion-row>
-            <ion-col size="5"><ion-label><strong>PRODUCTO</strong></ion-label></ion-col>
-            <ion-col size="2" class="ion-text-center"><ion-label><strong>CANT</strong></ion-label></ion-col>
-            <ion-col size="3" class="ion-text-end"><ion-label><strong>VR. UNIT</strong></ion-label></ion-col>
-            <ion-col size="2" class="ion-text-end"><ion-label></ion-label></ion-col>
-          </ion-row>
-
-          <ion-row *ngFor="let selectedItem of selectedItems" class="items-sell">
-            <ion-col size="5">{{ selectedItem.nombre }}</ion-col>
-            <ion-col size="2" class="ion-text-center">
-              <ion-input type="number" [formControl]="cantidadIngresada"
-                (ionChange)="onCantidadChange(selectedItem, $event)"></ion-input>
-            </ion-col>
-            <ion-col size="3" class="ion-text-end">$ {{ selectedItem.total }}</ion-col>
-            <ion-col size="2">
-              <ion-button color="danger" (click)="addItem(selectedItem)">
-                <ion-icon name="close-outline" slot="end"></ion-icon>
-              </ion-button>
-            </ion-col>
-          </ion-row>
-
-        </ion-grid>
-      </ion-col>
+      </div>
+      <div class="box2">
+        <div class="headers-table">
 
 
+          <div class="search">
 
-    </ion-row>
-  </ion-grid>
+            <div class="searchbar">
+            </div>
+          </div>
+        </div>
 
-  <ion-grid fixed>
-    <ion-row>
-      <ion-col size="6"></ion-col>
-      <ion-col size="6">
-        <ion-button expand="block" (click)="crearVenta()" class="sellbutton">
-          GENERAR VENTA
-        </ion-button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+        <div class="content-table">
+          <ion-grid color="primary">
+            <ion-row class="form-subtitles">
+
+              <ion-col size="2" class="subtitles">
+                <ion-label>Cliente: </ion-label>
+              </ion-col>
+
+              <ion-col size="7">
+                <form [formGroup]="formGroup">
+                  <ion-item>
+                    <ion-select [formControl]="clienteControl" placeholder="Seleccione el cliente">
+                      <ion-select-option *ngFor="let proveedor of dbclientes" [value]="proveedor">{{ proveedor.nombre
+                        }}</ion-select-option>
+                    </ion-select>
+                  </ion-item>
+                </form>
+              </ion-col>
+
+              <ion-col size="3">
+                <ion-button expand="block" (click)="crearVenta()" class="sellbutton">
+                  GENERAR VENTA
+                </ion-button>
+              </ion-col>
+
+            </ion-row>
+
+          </ion-grid>
+
+          <div class="custom-hr"></div>
+
+          <ion-grid>
+            <ion-row>
+              <ion-col size="5"><ion-label><strong>PRODUCTO</strong></ion-label></ion-col>
+              <ion-col size="2" class="ion-text-center"><ion-label><strong>CANT</strong></ion-label></ion-col>
+              <ion-col size="3" class="ion-text-end"><ion-label><strong>VR. UNIT</strong></ion-label></ion-col>
+              <ion-col size="2" class="ion-text-end"><ion-label></ion-label></ion-col>
+            </ion-row>
+            <ion-row *ngFor="let selectedItem of selectedItems" class="items-sell">
+              <ion-col size="5">{{ selectedItem.nombre }} - {{ selectedItem.unidad }}</ion-col>
+              <ion-col size="2" class="ion-text-center">
+                <ion-input type="number" [formControl]="cantidadIngresada"
+                  (ionChange)="onCantidadChange(selectedItem, $event)"></ion-input>
+              </ion-col>
+              <ion-col size="3" class="ion-text-end">$ {{ selectedItem.total }}</ion-col>
+              <ion-col size="2">
+                <ion-button color="danger" (click)="cancelarItem(selectedItem)">
+                  <ion-icon name="close-outline" slot="end"></ion-icon>
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+
+        <div class="pagination-controls">
+          <div class="control-buttons">
+            <button ion-button (click)="prevPage()" [disabled]="currentPage === 1">
+              <ion-icon name="chevron-back-outline"></ion-icon>
+            </button>
+            <span>{{ currentPage }}</span>
+            <button ion-button (click)="nextPage()" [disabled]="currentPage === totalPages">
+              <ion-icon name="chevron-forward-outline"></ion-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button>
+      <ion-icon name="arrow-back-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
 
 </ion-content>

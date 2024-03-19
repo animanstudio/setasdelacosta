@@ -32,8 +32,8 @@
       width: 90%;
 
       ion-label {
-        font-size: 16px;
-        font-family: 'poppins-medium', sans-serif;
+        font-size: 18px;
+        font-family: 'poppins-bold', sans-serif;
         --color: #cbcbcb;
       }
 
@@ -45,13 +45,13 @@
 
       &:hover,
       &.selected ion-icon {
-        color: #6B3416;
+        color: #419028;
       }
 
       &:hover,
       &.selected ion-label {
-        --background: #6B3416;
-        color: #6B3416;
+        --background: #419028;
+        color: #419028;
         --color: #cbcbcb;
       }
 

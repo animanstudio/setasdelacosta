@@ -23,11 +23,17 @@
       <div class="content-table">
         <ion-grid color="primary">     
           <ion-row class="row-titles">
-            <ion-col size="2">PRODUCTO</ion-col>
-            <ion-col size="4">PRESENTACIÓN</ion-col>
-            <ion-col size="2" class="ion-text-center">CANTIDAD</ion-col>
-            <ion-col size="2" class="ion-text-end">PRECIO VENTA</ion-col>
+            <ion-col size="1">CÓDIGO</ion-col>
+            <ion-col size="3">PRODUCTO</ion-col>
+                      
+            <ion-col size="1" class="ion-text-end">COSTO</ion-col>
+            <ion-col size="1" class="ion-text-end">PRECIO</ion-col>
+            <ion-col size="1" class="ion-text-end">P + IVA</ion-col>
+            <ion-col size="1" class="ion-text-end">DESC.</ion-col>
+            <ion-col size="1" class="ion-text-end">UTIL %</ion-col>
+            <ion-col size="1" class="ion-text-center">STOCK</ion-col>
             <ion-col size="2"></ion-col>
+            
           </ion-row>
         </ion-grid>
 
@@ -35,13 +41,18 @@
 
         <ion-grid >
           <ion-row *ngFor="let item of displayedItems">
-            <ion-col class="ion-text-start" size="2"> {{item.nombre}} </ion-col>            
-            <ion-col size="4"> {{item.unidad}} </ion-col>
-            <ion-col class="ion-text-center" size="2"> {{item.cantidad}}  </ion-col>
-            <ion-col class="ion-text-end" size="2"> $ {{item.precio}} </ion-col>
+            <ion-col class="ion-text-center" size="1"> {{item.id_producto}}</ion-col>                        
+            <ion-col class="ion-text-start" size="3"> {{item.nombre}} - {{item.unidad}}</ion-col>                        
+            
+            <ion-col class="ion-text-end" size="1"> {{item.costo | currency:'COP':'symbol-narrow'}} </ion-col>
+            <ion-col class="ion-text-end" size="1"> {{item.precio_antes_iva | currency:'COP':'symbol-narrow'}} </ion-col>
+            <ion-col class="ion-text-end" size="1"> {{item.precio_mas_iva | currency:'COP':'symbol-narrow'}} </ion-col>
+            <ion-col class="ion-text-end" size="1">  {{ item.descuento | percent }} </ion-col>
+            <ion-col class="ion-text-end" size="1">  {{ item.utilidad | percent }} </ion-col>
+            <ion-col class="ion-text-center" size="1"> {{item.cantidad}}  </ion-col>
             <ion-col size="2" class="buttons">
               <ion-button class="buttons" color="warning" (click)="analisisPrecio(item.id_producto)">
-                <ion-icon name="analytics-outline"></ion-icon>
+                <ion-icon name="bag-add-outline"></ion-icon>
               </ion-button>
               <ion-button>
                 <ion-icon name="create" color="info"></ion-icon>
@@ -50,6 +61,7 @@
                 <ion-icon name="trash"></ion-icon>
               </ion-button>              
             </ion-col>
+            
           </ion-row>
         </ion-grid>
       </div>

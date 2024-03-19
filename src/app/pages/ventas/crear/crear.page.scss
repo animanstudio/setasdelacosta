@@ -1,20 +1,91 @@
-.items-sell {
-    display: flex;
-    align-items: center;
-    font-family: 'poppins-medium', sans-serif;
-
+ion-content {
+  --background: #FFD2BA;
 }
 
-ion-content,
-ion-list, ion-select {
-    font-family: 'poppins-medium', sans-serif;
+#container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 5% 5% 0 5%; 
 }
 
-ion-toolbar {
-    --background: #6B3416;
-    color: white;
+ion-title {
+  font-size: 20px;
+  font-family: 'poppins-bold', sans-serif;
+  color: #6B3416;
 }
 
-.sellbutton {
-    --background: #6B3416;
+.nuevaventa {
+  display: flex;
+  width: 100%;
+  gap:5%;
+}
+
+.box1, .box2 {
+  width: 50%;
+  margin-top: 2%;    
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  height: 75vh;
+}
+
+.headers-table, .content-table {
+  margin: 0 5%;
+}
+
+.headers-table .title-table ion-label, 
+.headers-table .search .datetime ion-modal, 
+.headers-table .search .datetime ion-title, 
+.headers-table .search .datetime ion-datetime-button, 
+.headers-table .search .searchbar ion-searchbar {
+  font-size: 16px;
+  font-family: 'poppins-medium', sans-serif;
+  color: #6B3416;
+}
+
+.headers-table .title-table, .headers-table .search {
+  margin-top: 2vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.content-table ion-col {
+  font-size: 16px;
+  font-family: 'poppins-regular', sans-serif;
+  color: #1b1b1b;
+}
+
+ion-grid ion-row ion-col {
+  display: flex;
+  align-items: center;
+}
+
+.pagination-controls .control-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.pagination-controls .control-buttons button {
+  font-family: 'poppins-bold', sans-serif;
+  margin: 0 10px;
+}
+
+.custom-hr {
+  border-bottom: 1px solid #9f9f9f;
+  width: 100%;
+}
+
+ion-fab-button {
+  --background: #6B3416;
+  width: 10vh;
+  height: 10vh;
+  font-size: 5rem;
+  margin-bottom: 3.5vh;
+  margin-right: 2vh;
+}
+
+ion-fab-button ion-icon {
+  font-size: 3rem;
 }

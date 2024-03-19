@@ -1,5 +1,5 @@
 ion-content {
-  --background: #FFD2BA;
+  --background: #eec98e;
 
   #container {
     display: flex;
@@ -123,4 +123,17 @@ ion-content {
 .custom-hr {
   border-bottom: 1px solid #9f9f9f;
   width: 100%;
+}
+
+ion-fab-button {
+  --background: #419028;
+  width: 10vh;
+  height: 10vh;
+  font-size: 5rem;
+  margin-bottom: 3.5vh;
+  margin-right: 2vh;
+}
+
+ion-fab-button ion-icon {
+  font-size: 3rem;
 }

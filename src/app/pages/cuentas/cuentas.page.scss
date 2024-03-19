@@ -1,0 +1,70 @@
+ion-content {
+  --background: #FFD2BA;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 5% 5% 0 5%; 
+}
+
+ion-title {
+  font-size: 20px;
+  font-family: 'poppins-bold', sans-serif;
+  color: #6B3416;
+}
+
+.nuevaventa {
+  display: flex;
+  width: 100%;
+  gap:5%;
+}
+
+.box1, .box2 {
+  width: 50%;
+  margin-top: 2%;    
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  height: 75vh;
+}
+
+.headers-table {
+  margin: 5% 5% 0% 5%;    
+  ion-row{    
+    display: flex;    
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 2%;
+  }  
+}
+
+.content-table{
+  margin: 0% 5% 0 5%;    
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;  
+}
+
+.custom-hr {
+  border-bottom: 1px solid #9f9f9f;
+  width: 100%;
+}
+
+ion-fab-button {
+  --background: #6B3416;
+  width: 10vh;
+  height: 10vh;
+  font-size: 5rem;
+  margin-bottom: 3.5vh;
+  margin-right: 2vh;
+}
+
+ion-fab-button ion-icon {
+  font-size: 3rem;
+}
+
+

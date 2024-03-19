@@ -28,15 +28,13 @@ export class DetalleVentaPage implements OnInit {
   consultarPedido() {
     this.service.detalleVenta(this.idPedido).subscribe(
       (data) => {       
-        this.datosPedido = Object.values(data);
-        console.log(this.datosPedido[3]);
+        this.datosPedido[0] = Object.values(data);
+               
         
-        this.detallesPedido = this.datosPedido[3];  
-        console.log(this.detallesPedido);
-        this.totalPedido = this.datosPedido[1];
+        console.log(this.datosPedido[0][0]);
 
-        this.cliente = this.datosPedido[2];
-        console.log(this.datosPedido);
+        this.detallesPedido = this.datosPedido[0][0]
+        this.totalPedido = this.datosPedido[0][1]
       
       },
       (error) => {

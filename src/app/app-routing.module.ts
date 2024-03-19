@@ -6,7 +6,7 @@ const routes: Routes = [
     path: '',
     redirectTo: 'ventas',
     pathMatch: 'full'
-  },
+  },  
   {
     path: 'ventas',
     loadChildren: () => import('./pages/ventas/ventas.module').then( m => m.VentasPageModule)
@@ -34,6 +34,10 @@ const routes: Routes = [
   {
     path: 'productos',
     loadChildren: () => import('./pages/productos/productos.module').then( m => m.ProductosPageModule)
+  },
+  {
+    path: 'cuentas',
+    loadChildren: () => import('./pages/cuentas/cuentas.module').then( m => m.CuentasPageModule)
   }
 ];
 

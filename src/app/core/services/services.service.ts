@@ -1,19 +1,19 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServicesService {
 
-  private apiUrl2 = 'http://localhost/matte/public/';
+  private apiUrl = 'http://localhost/setas_app_dashboard/public/';
 
-  private apiUrl = 'https://calzadomisterr.com.co/matte-be/';
-  
-  
+  private apiUrl2 = 'https://calzadomisterr.com.co/matte-be/';
+
+
   constructor(
-    private http:HttpClient
+    private http: HttpClient
   ) { }
 
 
@@ -22,7 +22,7 @@ export class ServicesService {
     return this.http.get(this.apiUrl + "ventas");
   }
 
-  public detalleVenta(id:number): Observable<any> {
+  public detalleVenta(id: number): Observable<any> {
     return this.http.get(`${this.apiUrl}ventas/detalle/${id}`);
   }
 
@@ -30,7 +30,7 @@ export class ServicesService {
     return this.http.get(this.apiUrl + "compras");
   }
 
-  public detalleCompra(id:number): Observable<any> {
+  public detalleCompra(id: number): Observable<any> {
     return this.http.get(`${this.apiUrl}compras/detalle/${id}`);
   }
 
@@ -50,22 +50,54 @@ export class ServicesService {
     return this.http.get(this.apiUrl + "inventario");
   }
 
-  public variacionPrecio(idProducto:number): Observable<any> {
+  public variacionPrecio(idProducto: number): Observable<any> {
     return this.http.get(`${this.apiUrl}productos/precio/${idProducto}`);
+  }
+
+  public obtenerAbonos(): Observable<any> {
+    return this.http.get(this.apiUrl + "abonos");
+  }
+
+  public obtenerAcumuladoVentas(idCliente: number): Observable<any> {
+    return this.http.get(`${this.apiUrl}ventas/acumulado/${idCliente}`);
+  }
+
+  public obtenerAcumuladoAbonos(idCliente: number): Observable<any> {
+    return this.http.get(`${this.apiUrl}abonos/acumulado/${idCliente}`);
+  }
+
+  public obtenerTotalVentas(idCliente: number): Observable<any> {
+    return this.http.get(`${this.apiUrl}ventas/total/${idCliente}`).pipe(
+      map(response => response)
+    );
+  };
+
+  public obtenerTotalAbonos(idCliente: number): Observable<any> {
+    return this.http.get(`${this.apiUrl}abonos/total/${idCliente}`);
+  }
+
+  public saldoPendiente(idCliente: number): Observable<any> {
+    return this.http.get(`${this.apiUrl}saldo-pendiente/${idCliente}`);
   }
 
 
   // PETICIONES POST
-  crearVenta(ventaData: any): Observable<any> {
-    return this.http.post<any>(this.apiUrl +'crear/venta', ventaData);
+
+  crearCliente(productoData: any): Observable<any> {
+    return this.http.post<any>(this.apiUrl + 'clientes/crear', productoData);
   }
+
   
+  crearVenta(ventaData: any): Observable<any> {
+    return this.http.post<any>(this.apiUrl + 'crear/venta', ventaData);
+  }
+
   crearCompra(compraData: any): Observable<any> {
-    return this.http.post<any>(this.apiUrl +'crear/compra', compraData);
+    return this.http.post<any>(this.apiUrl + 'crear/compra', compraData);
   }
 
   crearProducto(productoData: any): Observable<any> {
-    return this.http.post<any>(this.apiUrl +'productos/crear', productoData);
+    return this.http.post<any>(this.apiUrl + 'productos/crear', productoData);
   }
 
 
