@@ -40,8 +40,31 @@
     </ion-item>
 
     <ion-item>
+      <ion-label >IVA: </ion-label>
+      <ion-input type="number" [(ngModel)]="iva"></ion-input>
+    </ion-item>
+
+    <ion-item>
       <ion-label >Cantidad: </ion-label>
       <ion-input type="number" [(ngModel)]="cantidad"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-select placeholder="Seleccione categoría producto" [(ngModel)]="categoria">
+        <div slot="label">Categoría: <ion-text color="danger">(Requerido)</ion-text></div>
+        <ion-select-option value="fruver">Fruver</ion-select-option>
+        <ion-select-option value="carne_pescado">Carne & Pescado</ion-select-option>
+        <ion-select-option value="lacteos">Lácteos</ion-select-option>
+        <ion-select-option value="salsas">Salsas</ion-select-option>
+        <ion-select-option value="carnes_frias">Carnes Frias</ion-select-option>
+        <ion-select-option value="sazonadores">Sazonadores</ion-select-option>
+        <ion-select-option value="importados">Importados</ion-select-option>
+        <ion-select-option value="conservas">Conservas</ion-select-option>
+        <ion-select-option value="despensa">Despensa</ion-select-option>
+        <ion-select-option value="desechables">Desechables</ion-select-option>
+        <ion-select-option value="aceites">Aceites</ion-select-option>
+        <ion-select-option value="vinagres">Vinagres</ion-select-option>
+      </ion-select>
     </ion-item>
 
   </ion-list>

@@ -8,7 +8,8 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgApexchartsModule } from 'ng-apexcharts';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,7 +20,8 @@ import { NgApexchartsModule } from 'ng-apexcharts';
     IonicModule.forRoot(), 
     AppRoutingModule,
     HttpClientModule,
-    NgApexchartsModule
+    NgxChartsModule
+    
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

@@ -1,7 +1,5 @@
 <ion-content [fullscreen]="true">
-
   <div id="container">
-
     <div class="title">
       <ion-title> Crear nueva venta </ion-title>
     </div>
@@ -9,7 +7,6 @@
     <div class="nuevaventa">
       <div class="box1">
         <div class="headers-table">
-
         </div>
 
         <div class="content-table">
@@ -43,10 +40,7 @@
       </div>
       <div class="box2">
         <div class="headers-table">
-
-
           <div class="search">
-
             <div class="searchbar">
             </div>
           </div>
@@ -55,20 +49,22 @@
         <div class="content-table">
           <ion-grid color="primary">
             <ion-row class="form-subtitles">
-
-              <ion-col size="2" class="subtitles">
-                <ion-label>Cliente: </ion-label>
+                            
+              <ion-col size="4">
+                <ion-item>
+                  <ion-button expand="block" class="sellbutton" (click)="buscarClientes()">
+                    AGREGAR CLIENTE                    
+                  </ion-button>                  
+                </ion-item>                
               </ion-col>
 
-              <ion-col size="7">
-                <form [formGroup]="formGroup">
-                  <ion-item>
-                    <ion-select [formControl]="clienteControl" placeholder="Seleccione el cliente">
-                      <ion-select-option *ngFor="let proveedor of dbclientes" [value]="proveedor">{{ proveedor.nombre
-                        }}</ion-select-option>
-                    </ion-select>
-                  </ion-item>
-                </form>
+              <ion-col size="4" class="subtitles">
+                <ion-label> {{ nombreCliente }} </ion-label>                
+              </ion-col>
+              <ion-col size="1">
+                <ion-button class="sellbutton" color="danger" size="small" (click)="resetearCliente()">
+                  X
+                </ion-button>
               </ion-col>
 
               <ion-col size="3">
@@ -76,31 +72,39 @@
                   GENERAR VENTA
                 </ion-button>
               </ion-col>
-
             </ion-row>
-
           </ion-grid>
 
           <div class="custom-hr"></div>
 
           <ion-grid>
             <ion-row>
-              <ion-col size="5"><ion-label><strong>PRODUCTO</strong></ion-label></ion-col>
-              <ion-col size="2" class="ion-text-center"><ion-label><strong>CANT</strong></ion-label></ion-col>
-              <ion-col size="3" class="ion-text-end"><ion-label><strong>VR. UNIT</strong></ion-label></ion-col>
-              <ion-col size="2" class="ion-text-end"><ion-label></ion-label></ion-col>
+              <ion-col size="4"><ion-label><strong>PRODUCTO</strong></ion-label></ion-col>
+              <ion-col size="2" class="ion-text-center"><ion-label ><strong>CANT</strong></ion-label></ion-col>
+              <ion-col size="1" class="ion-text-center"><ion-label ><strong>DESC</strong></ion-label></ion-col>
+              <ion-col size="3" class="ion-text-end"><ion-label ><strong>VR. UNIT</strong></ion-label></ion-col>
+              <ion-col size="2"><ion-label class="ion-text-end"></ion-label></ion-col>
             </ion-row>
             <ion-row *ngFor="let selectedItem of selectedItems" class="items-sell">
-              <ion-col size="5">{{ selectedItem.nombre }} - {{ selectedItem.unidad }}</ion-col>
+              <ion-col size="4">{{ selectedItem.nombre }} - {{ selectedItem.unidad }}</ion-col>
               <ion-col size="2" class="ion-text-center">
                 <ion-input type="number" [formControl]="cantidadIngresada"
                   (ionChange)="onCantidadChange(selectedItem, $event)"></ion-input>
               </ion-col>
-              <ion-col size="3" class="ion-text-end">$ {{ selectedItem.total }}</ion-col>
+              <ion-col size="1" class="ion-text-center">
+                <ion-label >{{ selectedItem.descuento }}</ion-label>
+              </ion-col>
+              <ion-col size="3" class="ion-text-end" >
+                <ion-label >{{ selectedItem.total | currency }}</ion-label>
+              </ion-col>
               <ion-col size="2">
                 <ion-button color="danger" (click)="cancelarItem(selectedItem)">
                   <ion-icon name="close-outline" slot="end"></ion-icon>
                 </ion-button>
+                <ion-button color="primary" (click)="cambiarDescuento(selectedItem)">
+                  <ion-icon name="pricetag-outline"></ion-icon>
+                </ion-button>
+                
               </ion-col>
             </ion-row>
           </ion-grid>
@@ -127,6 +131,5 @@
       <ion-icon name="arrow-back-outline"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-
 
 </ion-content>

@@ -1,0 +1,56 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>APLICAR DESCUENTO A PRODUCTO</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Agregar clientes</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-grid fixed>
+    <ng-container *ngIf="producto">
+      <ion-grid fixed>
+        <ion-row>
+          <ion-col size="12">
+            <ion-title>Producto: {{producto.nombre}} </ion-title>
+            <ion-title>Precio: {{producto.precio_mas_iva | currency:'USD':'symbol':'1.2-2'}} </ion-title>
+            <ion-title>IVA: {{producto.iva}} </ion-title>
+            <ion-title>Descuento máximo: {{producto.descuento * 100}} %</ion-title>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <ion-row>
+        <ion-col size="1"></ion-col>
+        <ion-col size="10">
+          <ion-range aria-label="Range with ticks" [ticks]="true" [snaps]="true" [min]="0" [max]="producto.descuento * 100" (ionChange)="actualizarDescuento($event)"></ion-range>
+        </ion-col>
+        <ion-col size="1"></ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="12">
+          <ion-title>DESCUENTO A APLICAR: {{descuentoPercent}} % </ion-title>
+          <ion-title>PRECIO + DESCUENTO: {{precioConDescuento | currency:'USD':'symbol':'1.2-2'}} </ion-title>
+        </ion-col>
+      </ion-row>
+    </ng-container>
+  </ion-grid>
+
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="6"></ion-col>
+      <ion-col size="6">
+        <ion-button expand="block" class="sellbutton" (click)="aplicarDescuento()">
+          APLICAR DESCUENTO
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

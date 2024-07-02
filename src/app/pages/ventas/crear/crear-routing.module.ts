@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: CrearPage
+  },
+  {
+    path: 'descuentos',
+    loadChildren: () => import('./descuentos/descuentos.module').then( m => m.DescuentosPageModule)
   }
 ];
 

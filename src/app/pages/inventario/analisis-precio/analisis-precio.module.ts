@@ -7,15 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { AnalisisPrecioPageRoutingModule } from './analisis-precio-routing.module';
 
 import { AnalisisPrecioPage } from './analisis-precio.page';
-import { NgApexchartsModule } from 'ng-apexcharts';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AnalisisPrecioPageRoutingModule,
-    NgApexchartsModule
+    AnalisisPrecioPageRoutingModule
+    
   ],
   declarations: [AnalisisPrecioPage]
 })

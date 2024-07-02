@@ -15,12 +15,11 @@
 
         <div class="search">
           <div class="datetime">
-
             <ion-title>desde: </ion-title>
             <ion-datetime-button datetime="datetime">Inicio: </ion-datetime-button>
             <ion-modal [keepContentsMounted]="true">
               <ng-template>
-                <ion-datetime id="datetime" presentation="date"></ion-datetime>
+                <ion-datetime id="datetime" presentation="date" [(ngModel)]="pastDate" (ionChange)="updateDates()"></ion-datetime>
               </ng-template>
             </ion-modal>
 
@@ -29,15 +28,12 @@
 
             <ion-modal [keepContentsMounted]="true">
               <ng-template>
-                <ion-datetime id="datetime2" presentation="date"></ion-datetime>
+                <ion-datetime id="datetime2" presentation="date" [(ngModel)]="currentDate" (ionChange)="updateDates()"></ion-datetime>
               </ng-template>
             </ion-modal>
-          </div>
-
-          <div class="searchbar">
-            <ion-searchbar placeholder="Buscar Cliente..."></ion-searchbar>
-          </div>
+          </div>          
         </div>
+
       </div>
 
       <div class="content-table">
@@ -59,17 +55,19 @@
             <ion-col size="3"> {{item.nombre_cliente}} </ion-col>
             <ion-col class="ion-text-end" size="2"> {{item.total | currency:'COP':'symbol-narrow'}} </ion-col>
             <ion-col class="ion-text-center" size="3"> {{item.fecha}} </ion-col>
-            <ion-col size="2" class="buttons">
-              
-              <ion-button color="warning">
-                <ion-icon name="document-text-outline" ></ion-icon>
-              </ion-button>             
-
+            <ion-col size="2" class="buttons">                   
               <ion-button (click)="verDetalle(item.id_venta)">
                 <ion-icon name="eye" color="info"></ion-icon>
               </ion-button>
+
+              <!-- 
               <ion-button class="buttons" color="danger">
                 <ion-icon name="trash"></ion-icon>
+              </ion-button>
+              -->
+
+              <ion-button class="buttons" color="danger">
+                {{item.tipo_venta}}
               </ion-button>
             </ion-col>
           </ion-row>
@@ -88,7 +86,6 @@
         </div>
       </div>
     </div>
-
   </div>
 
   <ion-fab slot="fixed" vertical="bottom" horizontal="end">
@@ -96,6 +93,5 @@
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-
 
 </ion-content>

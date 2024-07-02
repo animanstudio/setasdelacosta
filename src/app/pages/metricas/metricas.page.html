@@ -1,0 +1,108 @@
+<ion-content [fullscreen]="true">
+
+  <div id="container">
+    <div class="title">
+      <ion-title> MÉTRICAS </ion-title>
+    </div>
+
+    <div class="box">
+      <div class="headers-table">
+        <div class="title-table">
+          <ion-label></ion-label>
+        </div>
+
+        <div class="search">
+          <div class="datetime">
+
+            <ion-title>desde: </ion-title>
+            <ion-datetime-button datetime="datetime">Inicio: </ion-datetime-button>
+            <ion-modal [keepContentsMounted]="true">
+              <ng-template>
+                <ion-datetime id="datetime" presentation="date"></ion-datetime>
+              </ng-template>
+            </ion-modal>
+
+            <ion-title>hasta: </ion-title>
+            <ion-datetime-button datetime="datetime2"></ion-datetime-button>
+
+            <ion-modal [keepContentsMounted]="true">
+              <ng-template>
+                <ion-datetime id="datetime2" presentation="date"></ion-datetime>
+              </ng-template>
+            </ion-modal>
+          </div>
+
+          
+        </div>
+      </div>
+
+      <div class="content-table">
+        <ion-grid color="primary">
+          <ion-row class="row-titles">
+            <ion-col size="4" class="ion-text-center">VENDEDORES</ion-col>
+            <ion-col size="4" class="ion-text-center">VENTAS</ion-col>
+            <ion-col size="4" class="ion-text-center">PRODUCTOS</ion-col>            
+          </ion-row>
+        </ion-grid>
+
+        <div class="custom-hr"></div>
+
+        <ion-grid>
+          <ion-row >
+            <div class="grafico">
+            <ion-col >
+              <ngx-charts-bar-vertical
+                [view]="[300, 450]"
+                [scheme]="colorScheme"
+                [results]="multi"
+                [gradient]="gradient"
+                [xAxis]="showXAxis"
+                [yAxis]="showYAxis"                                
+                [showXAxisLabel]="showXAxisLabel"
+                [showYAxisLabel]="showYAxisLabel"                
+                [yAxisLabel]="yAxisLabel"                
+                (select)="onSelect($event)"
+                (activate)="onActivate($event)"
+                (deactivate)="onDeactivate($event)"
+              >
+              </ngx-charts-bar-vertical>
+            </ion-col>
+          </div>
+
+            <ion-col >
+              <ngx-charts-bar-vertical
+                [view]="[300, 450]"
+                [scheme]="colorScheme"
+                [results]="multiMes"
+                [gradient]="gradient"
+                [xAxis]="showXAxis"
+                [yAxis]="showYAxis"                      
+                [showXAxisLabel]="showXAxisLabel"
+                [showYAxisLabel]="showYAxisLabel"                
+                [yAxisLabel]="yAxisLabel"
+                (select)="onSelect($event)"
+                (activate)="onActivate($event)"
+                (deactivate)="onDeactivate($event)"
+              >
+              </ngx-charts-bar-vertical>
+            </ion-col>
+
+            <ion-col >
+              <ngx-charts-pie-chart
+                [view]="[400, 400]" 
+                [scheme]="colorScheme" 
+                [results]="pieData"    
+                [labels]="labels"                             
+                (select)="onSelect($event)"
+                (activate)="onActivate($event)"
+                (deactivate)="onDeactivate($event)"
+              >
+              </ngx-charts-pie-chart>
+            </ion-col>
+
+          </ion-row>
+        </ion-grid>
+      </div>
+    </div>
+  </div>
+</ion-content>

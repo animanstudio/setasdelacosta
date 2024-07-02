@@ -25,23 +25,23 @@
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
 
-@font-face {
-    font-family: 'poppins-regular';
-    src: url('../../matte/src/assets/fonts/Poppins-Regular.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'poppins-medium';
-    src: url('../../matte/src/assets/fonts/Poppins-Medium.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'poppins-bold';
-    src: url('../../matte/src/assets/fonts/Poppins-Bold.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
+/* Estilos para pantallas de 1920x1080 */
+@media only screen and (max-width: 1920px) {
+    body {
+      zoom: 100%;
+    }
+  }
+  
+  /* Estilos para pantallas de 1600x900 */
+  @media only screen and (max-width: 1600px) {
+    body {
+      zoom: 83%;
+    }
+  }
+  
+  /* Estilos para pantallas de 1280x720 */
+  @media only screen and (max-width: 1280px) {
+    body {
+      zoom: 67%;
+    }
+  }

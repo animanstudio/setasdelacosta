@@ -26,7 +26,22 @@ ion-content {
       border-radius: 10px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
       background-color: white;
-      height: 75vh;
+      height: 120vh;      
+
+      .control-buttons {
+        display: flex;
+        justify-content: center;
+
+        button{
+          font-family: 'poppins-bold', sans-serif;
+          margin-left: 10px;
+          margin-right: 10px;
+        }
+
+        .pagination-controls {
+          align-content: center;
+        }
+      }
 
       .headers-table {
         margin-left: 5%;
@@ -105,7 +120,7 @@ ion-content {
           color: #1b1b1b;
         }
 
-        .buttons {          
+        .buttons {
           display: flex;
           justify-content: center;
           align-items: flex-start;

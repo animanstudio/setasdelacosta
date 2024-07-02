@@ -15,20 +15,37 @@
   <ion-list class="inputs">
 
     <ion-item>
-      <ion-label >Nombre: </ion-label>
+      <ion-label>Nombre: </ion-label>
       <ion-input type="text" [(ngModel)]="nombre"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label >Dirección: </ion-label>
+      <ion-label>Dirección: </ion-label>
       <ion-input type="text" [(ngModel)]="direccion"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label >Teléfono: </ion-label>
+      <ion-label>Teléfono: </ion-label>
       <ion-input type="number" [(ngModel)]="telefono"></ion-input>
     </ion-item>
 
+    <ion-item>      
+      <ion-select placeholder="Seleccione vendedor" [(ngModel)]="vendedor">
+        <div slot="label">Vendedor: <ion-text color="danger">(Requerido)</ion-text></div>        
+        <ion-select-option [value]="vendedor" *ngFor="let vendedor of vendedores">{{vendedor}}</ion-select-option>        
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-select placeholder="Seleccione tipo de cliente" [(ngModel)]="tipo_cliente">
+        <div slot="label">Categoria: <ion-text color="danger">(Requerido)</ion-text></div>
+        <ion-select-option value="Restaurante">Restaurante</ion-select-option>
+        <ion-select-option value="Cafeteria">Cafetería</ion-select-option>
+        <ion-select-option value="Mayorista">Mayorista</ion-select-option>
+        <ion-select-option value="Hotel">Hotel</ion-select-option>
+        <ion-select-option value="Cattering">Cattering</ion-select-option>
+      </ion-select>
+    </ion-item>
   </ion-list>
 
   <ion-grid fixed>

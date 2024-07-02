@@ -9,17 +9,25 @@ export class ServicesService {
 
   private apiUrl = 'http://localhost/setas_app_dashboard/public/';
 
-  private apiUrl2 = 'https://calzadomisterr.com.co/matte-be/';
-
+  private apiUrl2 = 'https://www.setasdelacosta.com.co/api/';
 
   constructor(
     private http: HttpClient
   ) { }
 
+  
+  // PETICIONES GET  
+    public obtenerVentas(): Observable<any> {
+    return this.http.get(this.apiUrl + "ventas");
+  }
 
   // PETICIONES GET  
-  public obtenerVentas(): Observable<any> {
-    return this.http.get(this.apiUrl + "ventas");
+  public obtenerVentasxFecha(inicio: string, fin: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}ventas/fecha/${inicio}/${fin}`);
+  }
+
+  public datosCliente(id: number): Observable<any> {
+    return this.http.get(`${this.apiUrl}clientes/${id}`);
   }
 
   public detalleVenta(id: number): Observable<any> {
@@ -80,11 +88,36 @@ export class ServicesService {
     return this.http.get(`${this.apiUrl}saldo-pendiente/${idCliente}`);
   }
 
+  public obtenerVentasPorMes(): Observable<any> {
+    return this.http.get(`${this.apiUrl}ventas-por-mes`);
+  }
+
+  public obtenerVentasPorVendedor(): Observable<any> {
+    return this.http.get(`${this.apiUrl}ventas-por-vendedor`);
+  }
+
+  public obtenerProductosMasVendidos(): Observable<any> {
+    return this.http.get(`${this.apiUrl}productos-mas-vendidos/${4}`);
+  }
+
+  public obtenerVendedores(): Observable<any> {
+    return this.http.get(this.apiUrl + "vendedores");
+  }
+
+  descuentoProducto(idProducto: any): Observable<any> {
+    return this.http.get(`${this.apiUrl}descuento/${idProducto}`);
+  }
+
+  public ultimaVenta(): Observable<any> {
+    return this.http.get(this.apiUrl + "ultima-venta");
+  }
+
 
   // PETICIONES POST
 
-  crearCliente(productoData: any): Observable<any> {
-    return this.http.post<any>(this.apiUrl + 'clientes/crear', productoData);
+  crearCliente(clienteData: any): Observable<any> {
+    console.log("Datos enviados al servidor: ", clienteData); // 
+    return this.http.post<any>(this.apiUrl + 'clientes/crear', clienteData);    
   }
 
   
@@ -99,8 +132,26 @@ export class ServicesService {
   crearProducto(productoData: any): Observable<any> {
     return this.http.post<any>(this.apiUrl + 'productos/crear', productoData);
   }
+ 
 
+  // PETICIONES UPDATE  
+  actualizarCantidad(idProducto: number, cantidad: number): Observable<any> {
+    const url = `${this.apiUrl}inventario/actualizar-cantidad/${idProducto}`;
+    const data = { cantidad: cantidad };
+    return this.http.put<any>(url, data);
+  }
+    
+  eliminarCliente(id: number): Observable<any> {
+    return this.http.put(`${this.apiUrl}clientes/eliminar/${id}`, {});
+  }
 
+  eliminarProducto(id: number): Observable<any> {
+    return this.http.put(`${this.apiUrl}productos/eliminar/${id}`, {});
+  }
+
+  actualizarCliente(clienteId: number, clienteData: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/clientes/actualizar/${clienteId}`, clienteData);
+  }
 
 }
 

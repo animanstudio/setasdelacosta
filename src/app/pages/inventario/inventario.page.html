@@ -1,5 +1,4 @@
 <ion-content [fullscreen]="true">
-
   <div id="container">
 
     <div class="title">
@@ -15,7 +14,7 @@
 
         <div class="search">
           <div class="searchbar">
-            <ion-searchbar placeholder="Buscar producto..."></ion-searchbar>
+            <ion-searchbar placeholder="Buscar producto..." (ionInput)="onSearchInput($event)"></ion-searchbar>
           </div>
         </div>
       </div>
@@ -23,11 +22,12 @@
       <div class="content-table">
         <ion-grid color="primary">     
           <ion-row class="row-titles">
-            <ion-col size="1">CÓDIGO</ion-col>
+            
             <ion-col size="3">PRODUCTO</ion-col>
                       
             <ion-col size="1" class="ion-text-end">COSTO</ion-col>
             <ion-col size="1" class="ion-text-end">PRECIO</ion-col>
+            <ion-col size="1" class="ion-text-end">IVA</ion-col>
             <ion-col size="1" class="ion-text-end">P + IVA</ion-col>
             <ion-col size="1" class="ion-text-end">DESC.</ion-col>
             <ion-col size="1" class="ion-text-end">UTIL %</ion-col>
@@ -40,24 +40,23 @@
         <div class="custom-hr"></div>
 
         <ion-grid >
-          <ion-row *ngFor="let item of displayedItems">
-            <ion-col class="ion-text-center" size="1"> {{item.id_producto}}</ion-col>                        
-            <ion-col class="ion-text-start" size="3"> {{item.nombre}} - {{item.unidad}}</ion-col>                        
-            
+          <ion-row *ngFor="let item of displayedItems">            
+            <ion-col class="ion-text-start" size="3"> {{item.nombre}} - {{item.unidad}}</ion-col>                                    
             <ion-col class="ion-text-end" size="1"> {{item.costo | currency:'COP':'symbol-narrow'}} </ion-col>
             <ion-col class="ion-text-end" size="1"> {{item.precio_antes_iva | currency:'COP':'symbol-narrow'}} </ion-col>
+            <ion-col class="ion-text-end" size="1"> {{item.iva | percent}} </ion-col>
             <ion-col class="ion-text-end" size="1"> {{item.precio_mas_iva | currency:'COP':'symbol-narrow'}} </ion-col>
             <ion-col class="ion-text-end" size="1">  {{ item.descuento | percent }} </ion-col>
             <ion-col class="ion-text-end" size="1">  {{ item.utilidad | percent }} </ion-col>
             <ion-col class="ion-text-center" size="1"> {{item.cantidad}}  </ion-col>
             <ion-col size="2" class="buttons">
-              <ion-button class="buttons" color="warning" (click)="analisisPrecio(item.id_producto)">
+              <ion-button class="buttons" color="warning" (click)="cargarInventario(item.id_producto)">
                 <ion-icon name="bag-add-outline"></ion-icon>
               </ion-button>
               <ion-button>
                 <ion-icon name="create" color="info"></ion-icon>
               </ion-button>
-              <ion-button class="buttons" color="danger">
+              <ion-button class="buttons" color="danger" (click)="confirmarEliminarProducto(item.id_producto)">
                 <ion-icon name="trash"></ion-icon>
               </ion-button>              
             </ion-col>

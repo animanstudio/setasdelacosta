@@ -15,7 +15,7 @@
 
         <div class="search">
           <div class="searchbar">
-            <ion-searchbar placeholder="Buscar Cliente..."></ion-searchbar>
+            <ion-searchbar placeholder="Buscar Cliente..." (input)="onSearchInput($event)"></ion-searchbar>
           </div>
         </div>
       </div>
@@ -23,10 +23,11 @@
       <div class="content-table">
         <ion-grid color="primary">     
           <ion-row class="row-titles">
-            <ion-col size="3">NOMBRE</ion-col>
-            <ion-col size="3">DIRECCIÓN</ion-col>
+            <ion-col size="2">NOMBRE</ion-col>
+            <ion-col size="2">DIRECCIÓN</ion-col>            
             <ion-col size="2">TELÉFONO</ion-col>
-            <ion-col size="2">ESTADO</ion-col>
+            <ion-col size="2">VENDEDOR</ion-col>
+            <ion-col size="2">TIPO CLIENTE</ion-col>
             <ion-col size="2"></ion-col>
           </ion-row>
         </ion-grid>
@@ -34,24 +35,37 @@
         <div class="custom-hr"></div>
 
         <ion-grid >
-          <ion-row *ngFor="let item of clientes">
-            <ion-col class="ion-text-start" size="3"> {{item.nombre}} </ion-col>            
-            <ion-col size="3"> {{item.direccion}} </ion-col>
+          <ion-row *ngFor="let item of displayedItems">
+            <ion-col class="ion-text-start" size="2"> {{item.nombre}} </ion-col>            
+            <ion-col size="2"> {{item.direccion}} </ion-col>
             <ion-col class="ion-text-start" size="2"> {{item.telefono}}  </ion-col>
-            <ion-col class="ion-text-start" size="2"> {{item.estado}} </ion-col>
+            <ion-col class="ion-text-start" size="2"> {{item.vendedor}}  </ion-col>
+            <ion-col class="ion-text-start" size="2"> {{item.tipo_cliente}} </ion-col>
             <ion-col size="2" class="buttons">
-              <ion-button>
-                <ion-icon name="create" color="info"></ion-icon>
+              <ion-button (click)="actualizarCliente(item.id_cliente)">
+                <ion-icon name="create" color="info" ></ion-icon>
               </ion-button>
-              <ion-button class="buttons" color="danger">
+              <ion-button class="buttons" color="danger" (click)="confirmarBorrarCliente(item.id_cliente)">
                 <ion-icon name="trash"></ion-icon>
               </ion-button>
             </ion-col>
           </ion-row>
         </ion-grid>
+        
+      </div>
+      <div class="pagination-controls">
+        <div class="control-buttons">
+          <button ion-button (click)="prevPage()" [disabled]="currentPage === 1">
+            <ion-icon name="chevron-back-outline"></ion-icon>
+          </button>
+          <span>{{ currentPage }}</span>
+          <button ion-button (click)="nextPage()" [disabled]="currentPage === totalPages">
+            <ion-icon name="chevron-forward-outline"></ion-icon>
+          </button>
+        </div>
       </div>
     </div>
-  </div>
+  </div> 
 
   <ion-fab slot="fixed" vertical="bottom" horizontal="end">
     <ion-fab-button (click)="agregarCliente()">

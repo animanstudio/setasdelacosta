@@ -11,10 +11,12 @@ export class CrearProductoPage implements OnInit {
 
   nombre: string | undefined;
   unidad: string | undefined;  
+  categoria: string | undefined;  
   costo: number | undefined;
   precio_antes_iva: number | undefined;
   cantidad: number | undefined;
   descuento: number | undefined;
+  iva: number | undefined;
 
   constructor(
     private service: ServicesService,
@@ -33,6 +35,8 @@ export class CrearProductoPage implements OnInit {
       cantidad: this.cantidad,  
       precio_antes_iva: this.precio_antes_iva,
       descuento: this.descuento,
+      iva: this.iva,
+      categoria: this.categoria,
       estado: "activo"
     }
    
